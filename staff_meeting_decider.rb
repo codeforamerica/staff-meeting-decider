@@ -3,7 +3,6 @@ require 'nokogiri'
 require 'sinatra'
 
 get '/' do
-  org_page = HTTParty.get("https://raw.githubusercontent.com/codeforamerica/codeforamerica.org/master/about/team/index.html")
   org_page = HTTParty.get("http://www.codeforamerica.org/about/team/")
   parsed_page = Nokogiri::HTML(org_page)
   staff_picture_urls = parsed_page.css(".profile-photo").map do |e|
